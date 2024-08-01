@@ -1,0 +1,17 @@
+---
+version: "3.8"
+
+services:
+  httpd:
+    build: .
+    ports:
+      - "8888:80"
+    # Here comes the interesting part
+    environment:
+      ENVSUBST_ACTIVE: "true"
+      ENVSUBST_SRC_DIR: /opt/tpl/
+      ENVSUBST_DEST_DIR: /usr/local/apache2/htdocs/config/
+
+      ENV_VAR_A: It works!
+    volumes:
+      - "./tpl/:/opt/tpl/:ro"

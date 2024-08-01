@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Showcase: Config by env var</h1>
+    <p>Value of <code>ENV_VAR_A</code>: <span id="env-var-a"><i>Loading...</i></span></p>
+    <script>
+        const envVarASpan = document.getElementById("env-var-a");
+        fetch("config/config.json", {cache: "reload"})
+            .then(response => response.json())
+            .then(response => {
+                const codeEl = document.createElement("code");
+                codeEl.innerText = response.env.var_a;
+                envVarASpan.replaceChildren(codeEl);
+            });
+    </script>
+</body>
+</html>

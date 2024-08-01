@@ -1,0 +1,5 @@
+{
+  "env": {
+    "var_a": "Hello World at compile time!"
+  }
+}
